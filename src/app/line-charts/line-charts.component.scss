@@ -1,0 +1,14 @@
+.line-chart-container {
+    width: 800px;
+    height: auto;
+    margin: 0 auto;
+
+    @media(max-width: 1024px) {
+        width: 500px;
+    }
+
+    @media(max-width: 425px) {
+        width: 300px;
+        height: 250px;
+    }
+}

@@ -1,0 +1,14 @@
+<h1>{{ olympic }}</h1>
+<div class="infos-wrapper">
+    <div class="jo-container">
+        <h4>Number of JOs</h4>
+        <p>{{ numberOfOlympicsGames | async }}</p>
+    </div>
+    <div class="country-container">
+        <h4>Number of countries</h4>
+        <p>{{ numberOfCountries | async }}</p>
+    </div>
+</div>
+<div class="pie-container" *ngIf="pieChartData$ | async as pieChartData">
+    <app-pie-chart [data]="pieChartData$"></app-pie-chart>
+</div>

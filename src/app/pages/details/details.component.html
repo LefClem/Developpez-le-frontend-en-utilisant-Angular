@@ -1,0 +1,20 @@
+<h1>{{ nameOfTheCountry }}</h1>
+<button [routerLink]="['']">Back to homepage</button>
+<header>
+    <div class="infos-container">
+        <h4>{{ParticipationsTitle}}</h4>
+        <p>{{numberOfParticipations | async}}</p>
+    </div>
+    <div class="infos-container">
+        <h4>{{MedalsTitle}}</h4>
+        <p>{{numberOfMedals | async}}</p>
+    </div>
+    <div class="infos-container">
+        <h4>{{AthletesTitle}}</h4>
+        <p>{{numberOfAthletes | async}}</p>
+    </div>
+</header>
+
+<div class="line-container" *ngIf="lineChartData$ | async as lineChartData">
+    <app-line-charts [data]="lineChartData$"></app-line-charts>
+</div>

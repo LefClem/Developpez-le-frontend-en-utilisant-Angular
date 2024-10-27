@@ -1,0 +1,16 @@
+<div class="pie-container">
+    <ngx-charts-pie-chart
+        [results]="data | async"
+        [scheme]="'cool'"
+        [labels]="true"
+        [maxLabelLength]="20"
+        (select)="linkToDetails($event)"
+        >
+        <ng-template #tooltipTemplate let-model="model">
+            <div class="tooltip-template">
+                <h2>{{ model.name }}</h2>
+                <pre>🏅 {{model.value }}</pre>
+            </div>
+        </ng-template>
+    </ngx-charts-pie-chart>
+</div>
