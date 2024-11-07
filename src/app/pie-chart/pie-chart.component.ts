@@ -18,7 +18,11 @@ export class PieChartComponent implements OnInit  {
   }
   
   linkToDetails(event: any) {
-    this.router.navigate(['details', event.extra.id])
+    event.extra.id ?
+      this.router.navigate(['details', event.extra.id])
+    :
+      this.router.navigate(['/**'])
+
   }
 
 }

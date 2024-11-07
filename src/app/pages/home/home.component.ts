@@ -20,31 +20,9 @@ export class HomeComponent implements OnInit {
   
   ngOnInit(): void {    
     this.olympics$ = this.olympicService.getOlympics();
-    this.pieChartData$ = this.formatPieChartData();
-    this.numberOfOlympicsGames = this.getNumberOfOlympics();  
-    this.numberOfCountries = this.getNumberOfCountries();
+    this.pieChartData$ = this.olympicService.formatPieChartData();
+    this.numberOfOlympicsGames = this.olympicService.getNumberOfOlympics();  
+    this.numberOfCountries = this.olympicService.getNumberOfCountries();
   }
   
-  getNumberOfOlympics() {
-    return this.olympics$.pipe(
-      map(value => value.map(olympic => olympic.participations.length).reduce((acc, val) => acc += val, 0))
-    )
-  }
-
-  getNumberOfCountries() {
-    return this.olympics$.pipe(
-      map(value => value.length)
-    )
-  }
-  
-  formatPieChartData(){
-    return this.olympics$.pipe(
-      map(value => 
-        value.map(olympic => ({
-          name: olympic.country,
-          value: olympic.participations.reduce((acc, val) => acc += val.medalsCount, 0),
-          extra: { id: olympic.id }
-        }))
-    ))
-  }
 }
