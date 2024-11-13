@@ -8,10 +8,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { OlympicService } from './core/services/olympic.service';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { RouterLink } from '@angular/router';
-import { LineChartsComponent } from './line-charts/line-charts.component';
+import { LineChartsComponent } from './components/line-charts/line-charts.component';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent, PieChartComponent, DetailsComponent, LineChartsComponent],
