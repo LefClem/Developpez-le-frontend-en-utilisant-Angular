@@ -11,16 +11,16 @@ import { LineChartModule } from '@swimlane/ngx-charts';
   styleUrl: './details.component.scss'
 })
 export class DetailsComponent implements OnInit {
-  public nameOfTheCountry: string = "Name of the country";
+  public olympics$!: Observable<Olympic[]>;
+  public olympicCountryData$!: Observable<Olympic | undefined>;
+  public nameOfTheCountry!: Observable<string | undefined>;
   public ParticipationsTitle: string = "Number of entries";
   public MedalsTitle: string = "Total number medals";
   public AthletesTitle: string = "Total number of athletes";
   public numberOfParticipations!: Observable<number | undefined>;
   public numberOfMedals!: Observable<number | undefined>;;
   public numberOfAthletes!: Observable<number | undefined>;;
-  public olympics$!: Observable<Olympic[]>;
   id!: number;
-  public olympicCountryData$!: Observable<Olympic | undefined>;
   public lineChartData$!: Observable<LineChartModule>
 
   constructor(private olympicService: OlympicService, private route: ActivatedRoute) {
@@ -34,6 +34,7 @@ export class DetailsComponent implements OnInit {
     this.numberOfParticipations = this.olympicService.getNumberOfParticipations(this.olympicCountryData$);
     this.numberOfMedals = this.olympicService.getNumberOfMedals(this.olympicCountryData$);
     this.numberOfAthletes = this.olympicService.getNumberOfAthletes(this.olympicCountryData$);
+    this.nameOfTheCountry = this.olympicCountryData$.pipe(map(value => value?.country));
   }
 
 }
